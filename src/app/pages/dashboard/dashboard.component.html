@@ -1,0 +1,20 @@
+<div class="l-mortgage-content">
+  <div class="l-mortgage-content--sub">
+    <p class="l-mortgage-content--sub-text">
+      This calculator determines your mortgage payment and provides you with a
+      mortgage payment schedule. The calculator also shows how much money and
+      how many years you can save by making prepayments. To help determine
+      whether or not you qualify for a home mortgage based on income and
+      expenses, visit the Mortgage Qualifier Tool. Note: As of July 9, 2012, the
+      maximum amortization period for mortgages with less than a 20 percent down
+      payment is 25 years.
+    </p>
+  </div>
+
+  <app-payment-plan
+    (mortgageDataSubmitted)="calculateMortgage($event)"
+  ></app-payment-plan>
+  <app-calculation-summary
+    [caclulationSummary]="caclulationSummary"
+  ></app-calculation-summary>
+</div>

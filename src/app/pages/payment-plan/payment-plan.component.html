@@ -1,0 +1,152 @@
+<div class="l-mortgage-payment">
+  <form
+    class="l-mortgage-payment"
+    [formGroup]="mortgageForm"
+    (keydown.enter)="$event.preventDefault()"
+    (ngSubmit)="calculateMortgage()"
+  >
+    <section class="l-mortgage-payment--plan">
+      <header class="l-mortgage-payment--plan__header">
+        <h2 class="l-mortgage-payment--plan__header-txt">Payment Plan</h2>
+      </header>
+      <div class="l-mortgage-payment--plan__form">
+        <div class="l-mortgage-payment--plan__form-field">
+          <label
+            class="l-mortgage-payment--plan__form-field--label"
+            for="mortgageAmt"
+            >Mortgage Amount<span class="required-red">*</span></label
+          >
+          <div
+            class="l-mortgage-payment--plan__form-field--input"
+            appearance="outline"
+            formGroupName="PaymentPlan"
+          >
+            <input
+              type="text"
+              id="mortgageAmt"
+              placeholder="$600000"
+              formControlName="MortgageAmt"
+            />
+          </div>
+        </div>
+        <div class="l-mortgage-payment--plan__form-field">
+          <label
+            class="l-mortgage-payment--plan__form-field--label"
+            for="interstRate"
+            >Interest Rate<span class="required-red">*</span></label
+          >
+          <div
+            class="l-mortgage-payment--plan__form-field--input"
+            appearance="outline"
+            formGroupName="PaymentPlan"
+          >
+            <input
+              type="text"
+              id="interestRate"
+              placeholder="5%"
+              formControlName="InterestRate"
+            />
+          </div>
+        </div>
+        <div class="l-mortgage-payment--plan__form-field">
+          <label
+            class="l-mortgage-payment--plan__form-field--label"
+            for="period"
+            >Amortization period<span class="required-red">*</span></label
+          >
+          <div
+            class="l-mortgage-payment--plan__form-field--input"
+            appearance="outline"
+            formGroupName="PaymentPlan"
+          >
+            <select
+              name="period"
+              id="period"
+              formControlName="AmortizationPeriod"
+            >
+              <option *ngFor="let amor of amortization" [value]="amor">
+                {{ amor }} years
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="l-mortgage-payment--plan__form-field">
+          <label
+            class="l-mortgage-payment--plan__form-field--label"
+            for="frequency"
+            >Payment Frequency<span class="required-red">*</span></label
+          >
+          <div
+            class="l-mortgage-payment--plan__form-field--input"
+            appearance="outline"
+            formGroupName="PaymentPlan"
+          >
+            <select
+              name="frequency"
+              id="frequency"
+              formControlName="PaymentFrequency"
+            >
+              <option
+                *ngFor="let payment of paymentFrequecy"
+                [value]="payment.id"
+              >
+                {{ payment.label }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="l-mortgage-payment--plan__form-field">
+          <label class="l-mortgage-payment--plan__form-field--label" for="terms"
+            >Term<span class="required-red">*</span></label
+          >
+          <div
+            class="l-mortgage-payment--plan__form-field--input"
+            appearance="outline"
+            formGroupName="PaymentPlan"
+          >
+            <select name="terms" id="terms" formControlName="Term">
+              <option *ngFor="let term of terms" [value]="term">
+                {{ term }} years
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="l-mortgage-payment--pre">
+      <header class="l-mortgage-payment--pre__header">
+        <h2 class="l-mortgage-payment--pre__header-txt">Prepayment Plan</h2>
+      </header>
+      <div class="l-mortgage-payment--pre__form-field">
+        <label
+          class="l-mortgage-payment--pre__form-field--label"
+          for="paymentAmt"
+          >PrePayment Amout<span class="required-red">*</span></label
+        >
+        <div
+          class="l-mortgage-payment--pre__form-field--input"
+          appearance="outline"
+          formGroupName="prePaymentPlan"
+        >
+          <input
+            type="text"
+            id="paymentAmt"
+            placeholder="100000$"
+            formControlName="PaymentAmt"
+          />
+        </div>
+      </div>
+    </section>
+  </form>
+</div>
+<div class="l-submit-form">
+  <button
+    class="l-submit-form-button"
+    mat-flat-button
+    color="primary"
+    type="submit"
+    (click)="calculateMortgage()"
+  >
+    Calculate
+  </button>
+</div>

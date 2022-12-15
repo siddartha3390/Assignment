@@ -1,0 +1,158 @@
+$warn: #b48b25;
+$dark-text: #525146;
+$breakpoints: (
+  xxsm: 20px,
+  2xsm: 370px,
+  xsm: 400px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1440px,
+) !default;
+
+// media query mixin
+// use the base-breakpoints map
+// usage: @include breakpoint($breakpoint);
+@mixin breakpoint($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  } @else {
+    @warn 'error value does not exist in $base-breakpoints';
+  }
+}
+
+.l-calculation-summary {
+  width: 100%;
+  display: block;
+  position: relative;
+  margin: 4rem 0;
+  @include breakpoint(xxsm) {
+    overflow-x: auto;
+  }
+
+  @include breakpoint(sm) {
+    overflow-x: visible;
+  }
+
+  @include breakpoint(md){
+    margin: 3rem 0
+  }
+
+  &__noData {
+    text-align: center;
+
+    @include breakpoint(xxsm) {
+      width: 90%;
+      margin: 0 1rem 0 1rem;
+    }
+
+    @include breakpoint(sm) {
+      margin: auto;
+      width: 50%;
+    }
+    .mat-icon {
+      height: auto;
+      fill: $warn;
+      color: $warn;
+
+      @include breakpoint(xxsm) {
+        width: 150px;
+      }
+
+      @include breakpoint(sm) {
+        width: 200px;
+      }
+    }
+
+    &--content {
+      font-size: 1.44rem;
+      font-weight: bold;
+    }
+  }
+
+  &--table {
+    width: 90%;
+    border: solid #ccc 1px;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 1px 1px #ccc;
+    -moz-box-shadow: 0 1px 1px #ccc;
+    box-shadow: 0 1px 1px #ccc;
+
+    @include breakpoint(md) {
+      margin-left: 5rem;
+    }
+
+    &__caption{
+      margin-bottom: 2rem;
+    }
+
+    &__header {
+      width: 100%;
+      background-color: #f6f7ff;
+
+      &__contents {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        border-bottom: 0.2px solid #b9b9b9;
+
+        a {
+          color: $dark-text;
+          text-decoration: none;
+        }
+
+        &--column {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+          width: 100%;
+          cursor: pointer;
+
+          span {
+            margin-right: 1rem;
+          }
+        }
+      }
+    }
+
+    &__body {
+      width: 100%;
+
+      &__contents {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 1rem 0 0 0;
+        border-bottom: 0.2px solid #b9b9b9;
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &--column {
+          width: 12%;
+          padding: 0.5rem 0rem 1rem 0rem;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+        }
+
+        &--column:nth-child(2) {
+          justify-content: flex-start;
+        }
+
+        &--column:nth-child(4) {
+          justify-content: flex-start;
+        }
+      }
+    }
+  }
+}

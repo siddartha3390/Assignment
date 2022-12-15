@@ -1,0 +1,37 @@
+<div class="o-col-12 l-calculation-summary">
+  <table class="l-calculation-summary--table">
+    <caption class="l-calculation-summary--table__caption">
+      Calculation summary
+    </caption>
+    <thead class="l-calculation-summary--table__header">
+      <tr class="l-calculation-summary--table__header__contents">
+        <th>
+          <p>Category</p>
+        </th>
+        <th>
+          <p>Term</p>
+        </th>
+        <th>
+          <p>Amortization Period</p>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody class="l-calculation-summary--table__body">
+      <tr
+        class="l-calculation-summary--table__body__contents"
+        *ngFor="let summary of caclulationSummary"
+      >
+        <td class="l-calculation-summary--table__body__contents--column">
+          <span>{{ summary.descr }}</span>
+        </td>
+        <td class="l-calculation-summary--table__body__contents--column">
+          <span>{{ summary.termPeriod }}</span>
+        </td>
+        <td class="l-calculation-summary--table__body__contents--column">
+          <span>{{ summary.mortgagePeriod }}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
